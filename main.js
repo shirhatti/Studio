@@ -1,24 +1,17 @@
-  // Modules to control application life and create native browser window
-import {app, BrowserWindow} from 'electron';
-import {AddReply, AddRequest} from './adder_pb'
+// Modules to control application life and create native browser window
+const {app, BrowserWindow} = require('electron')
+const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let windows:Array<BrowserWindow> = []
+let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  var mainWindow = new BrowserWindow({
-    kiosk: true,
+  mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
-    webPreferences: {
-      //preload: path.join(__dirname, 'preload.js')
-    }
+    height: 600
   })
-  windows.push(mainWindow)
-  // and load the index.html of the app.
-  //mainWindow.loadFile('index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -28,8 +21,7 @@ function createWindow () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-
-    windows = []
+    mainWindow = null
   })
 }
 
@@ -48,5 +40,8 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (windows.length == 0) createWindow()
+  if (mainWindow === null) createWindow()
 })
+
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and require them here.

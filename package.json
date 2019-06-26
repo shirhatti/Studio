@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Diagnostics Studio",
   "author": "Sourabh Shirhatti",
-  "main": "main.ts",
+  "main": "main.js",
   "scripts": {
     "build": "yarn run tsc",
     "protoc": "yarn run grpc_tools_node_protoc --proto_path=\".\\protos\\\" --plugin=\"protoc-gen-grpc=.\\node_modules\\.bin\\grpc_tools_node_protoc_plugin.cmd\" --grpc_out=\".\\\" .\\protos\\adder.proto",
     "grpc-ts-declarations": "yarn run grpc_tools_node_protoc --proto_path=\".\\protos\\\" --plugin=\"protoc-gen-ts=.\\node_modules\\.bin\\protoc-gen-ts.cmd\" --ts_out=\".\\\" .\\protos\\adder.proto",
-    "start": "yarn run build && electron ./tsc_out/main.js",
+    "start": "electron ./main.js",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
@@ -18,8 +18,6 @@
     "electron": "^5.0.5",
     "electron-builder": "^20.44.4",
     "grpc-tools": "^1.8.0",
-    "ts-protoc-gen": "^0.10.0",
-    "tslint": "^5.18.0",
     "typescript": "^3.5.2"
   },
   "build": {
