@@ -14,7 +14,7 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "grpc": "^1.21.1",
+    "grpc": "^1.24.9",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
